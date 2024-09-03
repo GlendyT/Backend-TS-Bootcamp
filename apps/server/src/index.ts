@@ -1,7 +1,7 @@
 import bodyParser from 'body-parser'
 import express from 'express'
 import cors from 'cors'
-import router from './router'
+import router from './RoutesProducts/router'
 
 
 const app = express()

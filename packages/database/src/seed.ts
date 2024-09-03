@@ -1,21 +1,36 @@
 import { vinyls } from './data/vinyls'
 import { categories } from './data/categories'
-import { conditions } from './data/conditions'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
 async function main() {
   try {
-    await prisma.category.createMany({
-      data: categories,
+    // Crear las categorías primero
+    await prisma.vinylCollections.createMany({
+      data: categories
     })
-    await prisma.vinylCondition.createMany({
-      data: conditions,
-    })
-    await prisma.vinyl.createMany({
-      data: vinyls,
-    })
+
+    // Crear los productos de vinilo primero sin condiciones
+    for (const vinyl of vinyls) {
+      const createdVinyl = await prisma.vinylProducts.create({
+        data: {
+          title: vinyl.title,
+          artist: vinyl.artist,
+          image: vinyl.image,
+          categoryId: vinyl.categoryId
+        }
+      })
+
+      // Crear las condiciones para cada producto de vinilo
+      await prisma.vinylVariants.createMany({
+        data: vinyl.conditions.map((condition) => ({
+          condition: condition.condition,
+          price: condition.price,
+          vinylId: createdVinyl.id
+        }))
+      })
+    }
   } catch (error) {
     console.log(error)
   }

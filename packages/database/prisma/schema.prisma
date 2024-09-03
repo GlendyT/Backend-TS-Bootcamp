@@ -13,29 +13,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id        Int     @id @default(autoincrement())
-  name      String
-  slug      String
-  vinyls    Vinyl[]
+model VinylCollections {
+  id     Int             @id @default(autoincrement())
+  name   String
+  slug   String
+  vinyls VinylProducts[]
 }
 
-model VinylCondition {
-  id        Int     @id @default(autoincrement())
-  condition String  @unique
+model VinylVariants {
+  id        Int            @id @default(autoincrement())
+  condition String
   price     Float
-  vinyls    Vinyl[]
+  vinyl     VinylProducts  @relation(fields: [vinylId], references: [id])
+  vinylId   Int
 }
 
-model Vinyl {
-  id          Int            @id @default(autoincrement())
-  title       String
-  artist      String
-  image       String
-  category    Category       @relation(fields: [categoryId], references: [id])
-  categoryId  Int
-  condition   VinylCondition @relation(fields: [conditionId], references: [id])
-  conditionId Int
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+model VinylProducts {
+  id         Int              @id @default(autoincrement())
+  title      String
+  artist     String
+  image      String
+  category   VinylCollections @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  conditions VinylVariants[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
 }
