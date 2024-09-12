@@ -2,6 +2,7 @@ import { PrismaClient, VinylProducts, VinylVariants } from '@repo/db'
 
 const prisma = new PrismaClient()
 
+
 type VinylProps = {
   id: number
   title: string

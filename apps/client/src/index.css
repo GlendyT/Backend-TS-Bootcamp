@@ -13,3 +13,23 @@
     font-size: 0.9rem;
   }
 }
+
+* {
+  scrollbar-width:none;
+}
+
+*::-webkit-scrollbar {
+  @apply bg-slate-950;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-slate-950 rounded-full;
+}
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+  @apply bg-slate-950;
+}
+
+.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
+  @apply bg-slate-950;
+}

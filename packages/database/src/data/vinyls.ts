@@ -8,12 +8,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 30
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -25,12 +21,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 40
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -41,12 +33,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 80
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -58,12 +46,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 55
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -75,12 +59,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 75
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -92,12 +72,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 140
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -108,12 +84,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 90
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -124,12 +96,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 105
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -140,12 +108,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 77
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -157,12 +121,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 63
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -173,12 +133,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 18
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -189,12 +145,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 31
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
   {
@@ -205,12 +157,8 @@ export const vinyls = [
     conditions: [
       {
         condition: "old",
-        price: 20
+        price: 9
       },
-      {
-        condition: "new",
-        price: 15
-      }
     ]
   },
 ]
