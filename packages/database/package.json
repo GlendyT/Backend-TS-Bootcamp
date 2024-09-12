@@ -1,0 +1,23 @@
+{
+    "name": "@repo/db",
+    "version": "0.0.0",
+    "scripts": {
+      "db:start": "docker-compose up -d",
+      "db:stop": "docker-compose down",
+      "db:seed": "tsx ./src/seed.ts",
+      "db:generate": "prisma generate",
+      "db:migrate": "prisma db push --skip-generate"
+    },
+    "dependencies": {
+      "@prisma/client": "5.18.0"
+    },
+    "devDependencies": {
+      "@types/node": "^22.5.1",
+      "tsx": "^4.17.0",
+      "prisma": "5.18.0"
+    },
+    "exports": {
+      ".": "./src/index.ts"
+    }
+  }
+  

@@ -1,0 +1,41 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model VinylCollections {
+  id     Int             @id @default(autoincrement())
+  name   String
+  slug   String
+  vinyls VinylProducts[]
+}
+
+model VinylVariants {
+  id        Int            @id @default(autoincrement())
+  condition String
+  price     Float
+  vinyl     VinylProducts  @relation(fields: [vinylId], references: [id])
+  vinylId   Int
+}
+
+model VinylProducts {
+  id         Int              @id @default(autoincrement())
+  title      String
+  artist     String
+  image      String
+  category   VinylCollections @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  conditions VinylVariants[]
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+}
