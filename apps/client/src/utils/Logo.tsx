@@ -1,4 +1,3 @@
-//import beenyl from "../assets/beenylWhite.png"
 import beenyl2 from '../assets/beenylBlack.png'
 
 export default function Logo() {

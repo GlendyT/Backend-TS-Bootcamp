@@ -1,31 +1,19 @@
-import { formatCurrency } from '@/helpers/index'
-import { Order, Product } from '@/types/index'
+import { formatCurrency } from '@/utils/formatCurrency'
+import { Order } from '@/types/index'
 import whiteBeenil from '../../assets/beenylWhite.png'
 import { useEffect, useState } from 'react'
-import {
-  CartIconButton,
-  CloseIcon,
-  DeleteIcon,
-  MaxIcon,
-  MinIcon,
-} from '../../utils/IconButtons'
+import { CartIconButton, CloseIcon } from '@/utils/IconButtons'
+import CartItemDetails from './CartItemDetails'
+import { useCart } from '@/hooks/useCart'
 
 interface CartItemProps {
   order: Order[]
-  removeItem: (id: Product['id']) => void
-  decreaseQuantity: (id: Order['id']) => void
-  increaseQuantity: (id: Order['id']) => void
   cartTotal: number
 }
 
-export default function CartItem({
-  order,
-  removeItem,
-  decreaseQuantity,
-  increaseQuantity,
-  cartTotal,
-}: CartItemProps) {
+export default function CartItem({ order, cartTotal }: CartItemProps) {
   const [isCartOpen, setCartOpen] = useState(false)
+  const { removeItem, decreaseQuantity, increaseQuantity } = useCart()
 
   useEffect(() => {
     if (order.length > 0) {
@@ -79,70 +67,13 @@ export default function CartItem({
                   <div className="rounded shadow-md text-sm  backdrop-blur-xl bg-white/90">
                     <div className=" rounded-t-none rounded-b flex flex-col">
                       {order.map((item) => (
-                        <div
+                        <CartItemDetails
                           key={item.id}
-                          className="font-sans max-w-6xl mx-auto p-2"
-                        >
-                          <div className="flex flex-row-2 gap-10  pb-2">
-                            <div className="space-y-4">
-                              <div className="flex items-center gap-4">
-                                <div className="w-16 h-16 shrink-0  p-2 rounded-md">
-                                  <img
-                                    src={item.image}
-                                    className="w-full h-full object-contain"
-                                  />
-                                </div>
-
-                                <div className="w-full">
-                                  <h3 className="text-base font-semibold text-gray-800">
-                                    {item.title}
-                                  </h3>
-                                  <h6 className="text-sm text-gray-800 font-bold cursor-pointer mt-0.5">
-                                    {item.conditions.map((itemPrice) => (
-                                      <div key={itemPrice.id}>
-                                        Unit Price{' '}
-                                        {formatCurrency(itemPrice.price)}
-                                      </div>
-                                    ))}
-                                  </h6>
-
-                                  <div className="flex gap-4 mt-4">
-                                    <div className="flex items-center px-2.5 py-1.5 text-gray-800 text-xs bg-transparent rounded-md">
-                                      <button
-                                        type="button"
-                                        className=" text-gray-800 text-xs p-1 hover:bg-slate-400"
-                                        onClick={() =>
-                                          decreaseQuantity(item.id)
-                                        }
-                                      >
-                                        <MinIcon />
-                                      </button>
-
-                                      <span className="mx-2.5">
-                                        {item.quantity}
-                                      </span>
-                                      <button
-                                        type="button"
-                                        className=" text-gray-800 text-xs p-1 hover:bg-slate-400"
-                                        onClick={() =>
-                                          increaseQuantity(item.id)
-                                        }
-                                      >
-                                        <MaxIcon />
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="ml-auto flex items-end justify-end">
-                              <button onClick={() => removeItem(item.id)}>
-                                <DeleteIcon />
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                          item={item}
+                          decreaseQuantity={decreaseQuantity}
+                          increaseQuantity={increaseQuantity}
+                          removeItem={removeItem}
+                        />
                       ))}
                     </div>
                   </div>

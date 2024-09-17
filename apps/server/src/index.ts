@@ -3,7 +3,6 @@ import express from 'express'
 import cors from 'cors'
 import router from './RoutesProducts/router'
 
-
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))

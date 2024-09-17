@@ -25,14 +25,14 @@ export const productSchema = z.object({
   categoryId: z.number(),
   createdAt: z.string(),
   updatedAt: z.string(),
-  category: categorySchema, 
-  conditions: conditionsSchema, 
+  category: categorySchema,
+  conditions: conditionsSchema,
 })
 
 //Adding the Quantity for the OrderSchema
 export const baseProductSchema = productSchema.extend({
-  quantity: z.number() 
-});
+  quantity: z.number(),
+})
 
 // Dashboard Product schema
 export const dashboardProductSchema = z.array(
@@ -46,7 +46,6 @@ export const dashboardProductSchema = z.array(
     category: true,
   }),
 )
-
 
 // Types
 export type Product = z.infer<typeof productSchema>
