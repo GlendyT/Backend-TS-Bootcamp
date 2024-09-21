@@ -14,7 +14,7 @@ datasource db {
 }
 
 model VinylCollections {
-  id     Int             @id @default(autoincrement())
+  id     Int             @id @unique
   name   String
   slug   String
   vinyls VinylProducts[]

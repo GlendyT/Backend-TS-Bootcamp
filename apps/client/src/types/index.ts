@@ -41,6 +41,8 @@ export const dashboardProductSchema = z.array(
     title: true,
     artist: true,
     image: true,
+    createdAt: true,
+    updatedAt: true,
     conditions: true,
     categoryId: true,
     category: true,

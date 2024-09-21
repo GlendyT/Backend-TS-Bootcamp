@@ -1,10 +1,12 @@
 {
     "name": "@repo/db",
     "version": "0.0.0",
+    "type": "module",
     "scripts": {
       "db:start": "docker-compose up -d",
       "db:stop": "docker-compose down",
       "db:seed": "tsx ./src/seed.ts",
+      "db:cleanup": "tsx ./src/cleanup.ts",
       "db:generate": "prisma generate",
       "db:migrate": "prisma db push --skip-generate"
     },
@@ -17,7 +19,9 @@
       "prisma": "5.18.0"
     },
     "exports": {
-      ".": "./src/index.ts"
+      ".": "./src/index.ts",
+      "./seed": "./src/seed.ts",
+      "./cleanup": "./src/cleanup.ts"
     }
   }
   

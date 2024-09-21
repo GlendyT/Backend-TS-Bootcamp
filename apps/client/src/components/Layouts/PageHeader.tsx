@@ -11,8 +11,7 @@ export default function PageHeader() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const navigate = useNavigate()
-  const { order, cartTotal } =
-    useCart()
+  const { order, cartTotal } = useCart()
 
   const { data: products } = useQuery({
     queryKey: ['products'],
@@ -64,25 +63,26 @@ export default function PageHeader() {
           <div className="top-20 absolute px-36 pb-6 w-2/5 mx-8 max-sm:px-20 max-md:px-20 max-lg:px-20 max-xl:px-20 bg-black bg-opacity-60 backdrop-blur-2xl rounded-3xl">
             {filteredProducts.length > 0 ? (
               filteredProducts.map((product) => (
-                <>
+                <div
+                  key={product.id}
+                  className="pb-2 px-2 border-b border-gray-500 w-full "
+                >
                   <div
-                    key={product.id}
-                    className="pb-2 px-2 border-b border-gray-500 w-full "
+                    className="cursor-pointer flex flex-row justify-between"
+                    onClick={() => handleClickNavigation(product.id)}
                   >
-                    <div
-                      className="cursor-pointer flex flex-row justify-between"
-                      onClick={() => handleClickNavigation(product.id)}
-                    >
-                      <div className="flex flex-col text-slate-200">
-                        <p>{product.title}</p>
-                        <p className="text-[0.6rem] font-extrabold">
-                          {product.artist}
-                        </p>
-                      </div>
-                      <img src={product.image} className="w-10 flex items-center" />
+                    <div className="flex flex-col text-slate-200">
+                      <p>{product.title}</p>
+                      <p className="text-[0.6rem] font-extrabold">
+                        {product.artist}
+                      </p>
                     </div>
+                    <img
+                      src={product.image}
+                      className="w-10 flex items-center"
+                    />
                   </div>
-                </>
+                </div>
               ))
             ) : (
               <p className="p-2 text-slate-200">Not Found</p>
@@ -91,10 +91,7 @@ export default function PageHeader() {
         )}
       </div>
 
-      <CartItem
-        order={order}
-        cartTotal={cartTotal}
-      />
+      <CartItem order={order} cartTotal={cartTotal} />
     </div>
   )
 }
