@@ -1,4 +1,4 @@
-import { formatCurrency } from '@/helpers/index'
+import { formatCurrency } from '@/utils/formatCurrency'
 import { Condition } from '@/types/index'
 import TitleStyles from '@/utils/TitlesStyles'
 

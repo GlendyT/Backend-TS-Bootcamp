@@ -4,7 +4,7 @@ import { dashboardProductSchema, Product, productSchema } from '../types'
 
 export const getProducts = async () => {
   try {
-    const { data } = await api('/products')
+    const { data } = await api.get('/products')
     const response = dashboardProductSchema.safeParse(data)
     if (response.success) {
       return response.data
@@ -15,12 +15,13 @@ export const getProducts = async () => {
     if (isAxiosError(error) && error.message) {
       throw new Error(error.response?.data.error)
     }
+    throw error
   }
 }
 
 export const getProductById = async (id: number): Promise<Product> => {
   try {
-    const { data } = await api(`/products/${id}`)
+    const { data } = await api.get(`/products/${id}`)
     const response = productSchema.safeParse(data)
 
     if (response.success) {
@@ -32,6 +33,6 @@ export const getProductById = async (id: number): Promise<Product> => {
     if (isAxiosError(error) && error.message) {
       throw new Error(error.response?.data.error)
     }
-    throw new Error('An unexpected error occurred')
+    throw error
   }
 }

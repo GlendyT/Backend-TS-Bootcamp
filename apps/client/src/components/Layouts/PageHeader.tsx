@@ -11,7 +11,7 @@ export default function PageHeader() {
   const [searchTerm, setSearchTerm] = useState('')
 
   const navigate = useNavigate()
-  const { order, removeItem, decreaseQuantity, increaseQuantity, cartTotal } =
+  const { order, cartTotal } =
     useCart()
 
   const { data: products } = useQuery({
@@ -93,9 +93,6 @@ export default function PageHeader() {
 
       <CartItem
         order={order}
-        removeItem={removeItem}
-        decreaseQuantity={decreaseQuantity}
-        increaseQuantity={increaseQuantity}
         cartTotal={cartTotal}
       />
     </div>

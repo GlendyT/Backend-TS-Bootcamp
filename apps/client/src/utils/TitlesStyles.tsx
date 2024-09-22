@@ -2,7 +2,6 @@ type TitlesStylesProps = {
   label: string
   data: string
 }
-
 export default function TitleStyles({ label, data }: TitlesStylesProps) {
   return (
     <div className="flex flex-row font-extrabold italic items-center justify-center">

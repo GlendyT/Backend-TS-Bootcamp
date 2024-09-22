@@ -20,12 +20,8 @@
       "@/helpers/*": [
         "helpers/*"
       ],
-      "@/context/*": [
-        "context/*"
-      ],
-      "@/utils/*": [
-        "utils/*"
-      ],
+      "@/context/*": ["context/*"],
+      "@/utils/*": ["utils/*"],
     }
   },
   "extends": "@repo/typescript-config/vite.json",

@@ -22,8 +22,7 @@ export const getProducts = async (req: Request, res: Response) => {
     const vinylsItems = await getVinyls()
     res.status(201).json(vinylsItems)
   } catch (error) {
-    console.log(error)
-    res
+    return res
       .status(500)
       .json({ error: 'An error occurred while retrieving the vinyl' })
   }
@@ -41,22 +40,25 @@ export const getProductById = async (req: Request, res: Response) => {
     }
     res.status(201).json(vinylId)
   } catch (error) {
-    console.error(error)
-    res
+    return res
       .status(500)
       .json({ error: 'An error occurred while retrieving the vinyl' })
   }
 }
 
 export const createProduct = async (req: Request, res: Response) => {
-  const result = await createVinyl(req.body);
+  const result = await createVinyl(req.body)
 
   if (result.error) {
-    return res.status(400).json({ error: result.error });
+    return res.status(400).json({ error: result.error })
   }
-
-  return res.status(201).json({ message: 'New Product created successfully', newVinyl: result.vinyl });
-};
+  return res
+    .status(201)
+    .json({
+      message: 'New Product created successfully',
+      newVinyl: result.vinyl,
+    })
+}
 
 export const updateProduct = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id, 10)
@@ -87,7 +89,6 @@ export const updateProduct = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: 'Product updated successfully', updatedVinyl })
   } catch (error) {
-    console.error('Error updating vinyl:', error)
     return res
       .status(500)
       .json({ error: 'An error occurred while updating the vinyl' })
@@ -105,8 +106,6 @@ export const deleteProduct = async (req: Request, res: Response) => {
 
     return res.status(200).json('Vinyl successfully deleted')
   } catch (error) {
-    console.error(error)
-
     return res
       .status(500)
       .json({ error: 'An error occurred while deleting the vinyl' })
