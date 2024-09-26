@@ -1,25 +1,25 @@
 import { getCategories, getSelectedCategory } from '@/hooks/productFilters'
-import { useRouter, useSearch } from '@tanstack/react-router'
+import {  useRouter } from '@tanstack/react-router'
 import CategoryId from '../ProductFilters/CategoryId'
 import PriceId from '../ProductFilters/PriceId'
 import { useQuery } from '@tanstack/react-query'
 import { getProducts } from '@/api/ProductsAPI'
+export interface ProductsSearchParams {
+  category?: string;
+  priceSort?: string;
+}
 
-export default function Sidebar() {
+export default function Sidebar({category, priceSort}: ProductsSearchParams) {
   const { data: products } = useQuery({
     queryKey: ['products'],
     queryFn: getProducts,
   })
-
+  
   const router = useRouter()
 
-  const { category, priceSort } = useSearch({
-    category: String,
-    priceSort: String,
-  })
 
-  const categories = getCategories(products)
-  const selectedCategory = getSelectedCategory(categories, category)
+  const categories = products ? getCategories(products) : []
+  const selectedCategory = getSelectedCategory(categories, category || '')
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function Sidebar() {
               const selectedCategoryName =
                 categories.find((cat) => cat.id === categoryId)?.name || 'all'
               router.navigate({
-                search: { category: selectedCategoryName, priceSort },
+                search: { category: selectedCategoryName, priceSort},
               })
             }}
           />
