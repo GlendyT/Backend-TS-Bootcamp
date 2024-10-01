@@ -167,7 +167,7 @@ importers:
         version: 1.47.1
       '@repo/db':
         specifier: workspace:*
-        version: link:../../packages/database
+        version: link:../../packages/db
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
@@ -188,7 +188,7 @@ importers:
     dependencies:
       '@repo/db':
         specifier: workspace:*
-        version: link:../../packages/database
+        version: link:../../packages/db
       body-parser:
         specifier: ^1.20.2
         version: 1.20.2
@@ -277,7 +277,7 @@ importers:
 
   packages/config-typescript: {}
 
-  packages/database:
+  packages/db:
     dependencies:
       '@prisma/client':
         specifier: 5.18.0
