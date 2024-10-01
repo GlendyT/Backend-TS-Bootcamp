@@ -37,7 +37,7 @@ export default defineConfig({
     {
       name: 'setup',
       testMatch: /global\.setup\.ts/,
-    // teardown: 'cleanup',
+      teardown: 'cleanup',
     },
     {
       name: 'cleanup',
