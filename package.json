@@ -2,10 +2,6 @@
   "name": "repo",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "start": "turbo start",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md}\"",
     "prepare": "husky"
   },
