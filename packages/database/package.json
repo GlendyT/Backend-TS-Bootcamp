@@ -3,8 +3,8 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-      "db:start": "docker-compose up -d",
-      "db:stop": "docker-compose down",
+      "db:start": "docker compose up -d",
+      "db:stop": "docker compose down",
       "db:seed": "tsx ./src/seed.ts",
       "db:cleanup": "tsx ./src/cleanup.ts",
       "db:generate": "prisma generate",
