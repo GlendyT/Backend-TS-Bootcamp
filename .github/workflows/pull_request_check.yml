@@ -4,8 +4,9 @@ on:
     branches: [main]
 jobs:
   test:
-    timeout-minutes: 60
+    timeout-minutes: 10
     runs-on: ubuntu-latest
+    environment: LOCAL
     steps:
       - uses: actions/checkout@v4
 
@@ -22,6 +23,18 @@ jobs:
 
       - name: Install Playwright Browsers
         run: pnpm dlx playwright install --with-deps
+
+      - name: Create Database .env file
+        run: |
+          echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > ./packages/db/.env
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> ./packages/db/.env
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> ./packages/db/.env
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> ./packages/db/.env
+
+      - name: Run Database
+        run: |
+          pnpm exec turbo db:start
+          pnpm exec turbo db:migrate
 
       - name: Run Project
         run: pnpm exec turbo start
