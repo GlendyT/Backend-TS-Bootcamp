@@ -47,3 +47,5 @@ seed()
     console.error(e)
     await prisma.$disconnect()
   })
+
+  //test
