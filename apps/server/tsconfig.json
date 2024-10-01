@@ -4,6 +4,10 @@
     "lib": ["ES2015"],
     "outDir": "./dist"
   },
+  "tsc-alias": {
+    "resolveFullPaths": true,
+    "verbose": false
+  },
   "exclude": ["node_modules"],
-  "include": ["src"]
+  "include": ["src/**/*.ts"]
 }
