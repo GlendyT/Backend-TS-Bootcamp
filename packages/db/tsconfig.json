@@ -1,13 +1,21 @@
 {
   "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
-    "lib": ["ES2015"],
+    "lib": [
+      "ES2015"
+    ],
     "outDir": "./dist"
   },
   "tsc-alias": {
     "resolveFullPaths": true,
     "verbose": true
   },
-  "exclude": ["node_modules"],
-  "include": ["src"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src",
+    "./seed.ts",
+    "./cleanup.ts"
+  ]
 }
