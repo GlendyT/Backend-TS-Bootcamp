@@ -35,6 +35,7 @@ jobs:
         run: |
           pnpm exec turbo db:start
           pnpm exec turbo db:migrate
+          pnpm exec turbo db:generate
 
       - name: Run Unit Tests
         run: pnpm exec turbo test
