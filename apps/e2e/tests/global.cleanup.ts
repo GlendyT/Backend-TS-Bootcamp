@@ -3,7 +3,6 @@ import { cleanup } from '@repo/db/cleanup'
 import { test as teardown } from '@playwright/test'
 const prisma = new PrismaClient()
 
-
 teardown.describe('global teardown ', () => {
   teardown('cleanup database', async () => {
     console.log('Cleanup database...')
