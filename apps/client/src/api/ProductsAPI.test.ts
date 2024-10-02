@@ -31,6 +31,8 @@ describe('getProducts', () => {
           id: 1,
           name: 'Rock',
         },
+        createdAt: '2024-01-01T00:00:00Z',  // Añadir estos campos
+        updatedAt: '2024-01-02T00:00:00Z',
         conditions: [
           {
             id: 1,
@@ -56,6 +58,8 @@ describe('getProducts', () => {
           id: 2,
           name: 'Jazz',
         },
+        createdAt: '2024-01-01T00:00:00Z',  // Añadir estos campos
+        updatedAt: '2024-01-02T00:00:00Z',
         conditions: [
           {
             id: 3,
@@ -72,6 +76,7 @@ describe('getProducts', () => {
         ],
       },
     ]
+    
 
     ;(api.get as jest.Mock).mockResolvedValue({ data: mockData })
 
